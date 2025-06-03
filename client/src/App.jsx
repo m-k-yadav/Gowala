@@ -1,34 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./auth/AuthContext";
+import Signup from "./auth/Signup";
+import Login from "./auth/Login";
+import CustomerDashBoard from "./pages/CustomerDashBoard";
+import AdminDashboard from "./pages/AdminDashboard";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className='text-2xl'>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login/>}/>
+          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/dashboard" element={<CustomerDashBoard/>}/>
+          <Route path="/admin" element={<AdminDashboard/>}/>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 
