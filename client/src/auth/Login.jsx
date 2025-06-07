@@ -13,15 +13,15 @@ const Login = () => {
     });
     
     const handleChange = (e)=>{
-        console.log(e.target.value)
+        //console.log(e.target.value)
         setForm({...form, [e.target.name]: e.target.value})
     }
-
+    
     const handleSubmit = async (e)=>{
         e.preventDefault();
         try{
             const res = await axios.post('http://localhost:5000/api/auth/login', form);
-            console.log(res.data);
+            //console.log("Data After Ligin : ", res.data);
             login(res.data.user, res.data.token);
 
             if(res.data.user.role ==='admin') {
@@ -37,12 +37,30 @@ const Login = () => {
     }
 
   return (
-    <div>
+    <div className='flex '>
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
-            <input name='email' type="email" placeholder='Email' onChange={handleChange} required/>
-            <input name='password' type="password" placeholder='Password' onChange={handleChange} required/>
-            <button type='submit'>Login</button>
+            <label className="block text-sm/6 font-medium">Email</label>
+            <input 
+                className='rounded-xl '
+                name='email' type="email" 
+                placeholder='Email' 
+                onChange={handleChange} 
+                required
+            />
+
+            <label className="block text-sm/6 font-medium">Email</label>
+            <input 
+                name='password' 
+                type="password" 
+                placeholder='Password' 
+                onChange={handleChange} 
+                required
+            />
+
+            <button 
+                className='block bg-[#00ADB5] px-5 py-2 rounded-xl text-[#000]'
+                type='submit'>Login</button>
         </form>
     </div>
   )

@@ -16,6 +16,7 @@ const Signup = () => {
 
     const handleChange = (e)=>{
         setForm({...form, [e.target.name]: e.target.value });
+        console.log(form);
     } //here we are simply updateing the form [name]:"value"
 
     const handleSubmit = async (e)=>{
@@ -33,7 +34,7 @@ const Signup = () => {
     <div>
         <h1>Signup</h1>
         <form onSubmit={handleSubmit}>
-            <input name="text" placeholder="Name" onChange={handleChange} required/>
+            <input name="name" placeholder="Name" onChange={handleChange} required/>
             <input name="phone" placeholder="Phone" onChange={handleChange} required/>
             <input name="email" type="email" placeholder="Email" onChange={handleChange} required/>
             <input name="password" type="password" placeholder="Password" onChange={handleChange} required/>

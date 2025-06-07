@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken');
 
 const genarateToken = (user)=>{
     return jwt.sign(
-        {id: user._id, role: user.role},
+        {id: user._id, name: user.name, phone:user.phone, role: user.role},
         process.env.JWT_SECRET,
-        { expiresIn: '7d'}
+        { expiresIn: '1d'}
     );
 };
 
@@ -31,7 +31,7 @@ exports.signup =async(req, res)=>{
         const token = genarateToken(user);
 
         res.status(201).json({
-            user:{id: user._id, name: user.name, role: user.role},
+            user:{id: user._id, name: user.name,phone: user.phone, role: user.role},
             token
         });
     }catch(error){
@@ -51,7 +51,7 @@ exports.login = async(req, res) =>{
             const token = jwt.sign(
                 {role: 'admin'},
                 process.env.JWT_SECRET,
-                {expiresIn: '7d'}
+                {expiresIn: '1d'}
             );
             return res.status(200).json({
                 user: {
@@ -64,6 +64,7 @@ exports.login = async(req, res) =>{
 
         //lets say email is not registerd
         const user = await User.findOne({email});
+        console.log(user);
         if(!user){
             return res.status(400).json({message:"Invalid Email"});
         }
@@ -77,7 +78,7 @@ exports.login = async(req, res) =>{
         const token = genarateToken(user);
 
         res.status(200).json({
-            user:{id: user._id, name: user.name, role: user.role},
+            user:{id: user._id, name: user.name, phone:user.phone, role: user.role},
             token
         });
 
