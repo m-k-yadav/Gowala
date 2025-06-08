@@ -6,7 +6,8 @@ import AdminDashboard from "../pages/AdminDashboard";
 import SubscriptionForm from "../pages/SubscriptionForm";
 import LandingPage from "../pages/LandingPage";
 import { AuthProvider } from "../auth/AuthContext";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import DeliveryCalendar from "./DeliveryCalendar";
 
 const MainRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const MainRoutes = () => {
             <Route path="/dashboard" element={<CustomerDashBoard />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/subscribe" element={<SubscriptionForm />} />
+            <Route path="/calendar" element={<DeliveryCalendar/>}/>
           </Routes>
       </AuthProvider>
     </div>

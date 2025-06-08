@@ -4,6 +4,8 @@ const dotenv = require('dotenv')
 const connectDB = require('./config/db')
 
 const subscriptionRoutes = require('./routes/subscription');
+const deliveryRoutes = require('./routes/delivery');
+
 
 dotenv.config();
 connectDB();
@@ -19,6 +21,7 @@ app.get('/', (req,res)=>{
 
 app.use('/api/auth', require('./routes/authRoutes'))
 app.use('/api/subscription', subscriptionRoutes);
+app.use('/api/delivery', deliveryRoutes);
 
 //app.length('/', (req,res) => res.send("Hey Milkly your backEnd is running"));
 const PORT = process.env.PORT || 5000;

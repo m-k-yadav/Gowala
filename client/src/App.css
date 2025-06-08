@@ -1,0 +1,10 @@
+.react-calendar__tile.highlight {
+  background: #4ade80;
+  color: white;
+  border-radius: 10px;
+}
+
+.react-calendar__tile.dimmed {
+  opacity: 0.3;
+  pointer-events: none;
+}

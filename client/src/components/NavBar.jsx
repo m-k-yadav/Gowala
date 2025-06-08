@@ -34,6 +34,9 @@ const NavBar = () => {
       <NavLink className={getNavLinkClasses} to="/dashboard">
         Dashboard
       </NavLink>
+      <NavLink className={getNavLinkClasses} to="/calendar">
+        Calendar
+      </NavLink>
     </nav>
   );
 };
